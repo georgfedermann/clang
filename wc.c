@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 // count characters in input
-int main(void){
+int main(void) {
   long characterCount = 0;
   long lineCount = 0;
   long wordCount = 0;
   int character;
 
-  while( (character = getchar()) != EOF ){
+  while ((character = getchar()) != EOF) {
     characterCount++;
-    if( character == ' ' ){
+    if (character == ' ') {
       wordCount++;
-    } else if ( ((char)character) == '\n' ){
+    } else if (((char)character) == '\n') {
       wordCount++;
       lineCount++;
     }
