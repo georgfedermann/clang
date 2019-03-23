@@ -11,14 +11,14 @@ int main(void) {
   int lastCharWasNotBlank = 0;
   int readChar;
   while ((readChar = getchar()) != EOF) {
-    if (isWhitespace(readChar) && lastCharWasNotBlank) {
-      lastCharWasNotBlank = 0;
-      putchar(' ');
-    } else if (isWhitespace(readChar) && !lastCharWasNotBlank) {
-      ;
-    } else {
+    if (!isWhitespace(readChar)) {
       lastCharWasNotBlank = 1;
       putchar(readChar);
+    } else if (lastCharWasNotBlank) {
+      lastCharWasNotBlank = 0;
+      putchar(' ');
+    } else {
+      ;
     }
   }
   return 0;
