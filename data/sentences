@@ -1,0 +1,5 @@
+Before we leave the character counting program,
+observe that if the input contains no character,
+the while for for test fails on the very first
+call to getchar, and the program produces zero,
+the right answer.
