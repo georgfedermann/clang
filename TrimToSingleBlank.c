@@ -3,19 +3,19 @@
 // one single blank character.
 
 int isWhitespace(int character) {
-  return character == ' ' || character == '\t';
+  return character == ' ' || character == '\t' || character == '\n';
 }
 
 int main(void) {
   // 1 if last character was non whitespace, 0 if it was whitespace.
-  int lastCharWasNotBlank = 0;
+  int lastCharWasNotWhitespace = 0;
   int readChar;
   while ((readChar = getchar()) != EOF) {
     if (!isWhitespace(readChar)) {
-      lastCharWasNotBlank = 1;
+      lastCharWasNotWhitespace = 1;
       putchar(readChar);
-    } else if (lastCharWasNotBlank) {
-      lastCharWasNotBlank = 0;
+    } else if (lastCharWasNotWhitespace) {
+      lastCharWasNotWhitespace = 0;
       putchar(' ');
     } else {
       ;
