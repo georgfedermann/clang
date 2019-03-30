@@ -8,14 +8,14 @@ int isWhitespace(int character) {
 
 int main(void) {
   // 1 if last character was non whitespace, 0 if it was whitespace.
-  int lastCharWasNotWhitespace = 0;
+  int lastCharacterWasWhitespace = 1;
   int readChar;
   while ((readChar = getchar()) != EOF) {
     if (!isWhitespace(readChar)) {
-      lastCharWasNotWhitespace = 1;
+      lastCharacterWasWhitespace = 0;
       putchar(readChar);
-    } else if (lastCharWasNotWhitespace) {
-      lastCharWasNotWhitespace = 0;
+    } else if (!lastCharacterWasWhitespace) {
+      lastCharacterWasWhitespace = 1;
       putchar(' ');
     } else {
       ;
