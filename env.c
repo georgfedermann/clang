@@ -19,10 +19,9 @@ int main(int argCount, char** argValues) {
     printUsage();
   } else {
     int c;
-    for (c = 1; c < argCount; c++){
+    for (c = 1; c < argCount; c++) {
       printEnvironmentVariable(argValues[c]);
     }
   }
   return 0;
 }
-

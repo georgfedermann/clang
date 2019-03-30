@@ -15,12 +15,12 @@ int main(void) {
 
   while ((character = getchar()) != EOF) {
     characterCount++;
-    if (character == ' ') {
-      parserState = OUTSIDE_WORD_BOUNDARIES;
-    } else if (((char)character) == '\n') {
+    if (((char)character) == '\n') {
       lineCount++;
+    }
+    if (character == ' ' || character == '\n' || character == '\t') {
       parserState = OUTSIDE_WORD_BOUNDARIES;
-    } else if (parserState == OUTSIDE_WORD_BOUNDARIES){
+    } else if (parserState == OUTSIDE_WORD_BOUNDARIES) {
       wordCount++;
       parserState = WITHIN_WORD_BOUNDARIES;
     }
