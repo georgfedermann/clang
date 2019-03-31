@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 // count characters in input
 // use states to define whether current position is within or out
 // of the boundaries of a word. If out of boundaries the next non-
