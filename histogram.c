@@ -5,6 +5,9 @@
 // define constants for the states of the word parser
 #define WITHIN_WORD_BOUNDARIES 0
 #define OUTSIDE_WORD_BOUNDARIES 1
+#define MAX_WORD_LENGTH 25
+#define HISTOGRAM_HORIZONTAL_WIDTH 80
+#define HISTOGRAM_VERTICAL_HEIGHT 20
 
 int isWhitespace(int character) {
   // is whitespace if is not a number
@@ -21,14 +24,14 @@ int main(void) {
   // expect word lengths from 1 to 20. Create array that will hold word lengths
   // where the index is the number of letters and the value is the found number
   // of words in the input text for each number of letters.
-  int wordStats[25];
+  int wordStats[MAX_WORD_LENGTH];
   // count characters within the current word
   int currentWordLength = 0;
-  char currentWord[25];
+  char currentWord[MAX_WORD_LENGTH];
 
   // initialize wordStats array to all zeros
   int c;
-  for (c = 0; c < 25; c++) {
+  for (c = 0; c < MAX_WORD_LENGTH; c++) {
     wordStats[c] = 0;
     currentWord[c] = ' ';
   }
@@ -42,7 +45,7 @@ int main(void) {
       if (currentWordLength >= 16) {
         printf("Found long word: %s.\n", &currentWord[0]);
       }
-      for (c = 0; c < 25; c++) {
+      for (c = 0; c < MAX_WORD_LENGTH; c++) {
         currentWord[c] = ' ';
       }
     } else if (!isWhitespace(character) &&
@@ -63,6 +66,28 @@ int main(void) {
   for (c = 1; c < 30; c++) {
     printf("Number of words with %d characters is %d.\n", c, wordStats[c]);
   }
+
+  // now print the histogramm
+  // TODO move logic to functions later
+  // common logic
+  int totalNumberOfWords = 0;
+  for (c = 0; c < MAX_WORD_LENGTH; c++) {
+    totalNumberOfWords += wordStats[c];
+  }
+
+  // horizontal version (easier)
+  int row = 0, col = 0;
+  for (row = 1; row < MAX_WORD_LENGTH; row++) {
+    int numberOfColumns = ((float)HISTOGRAM_HORIZONTAL_WIDTH) /
+                          totalNumberOfWords * wordStats[row];
+    printf("%2d->%5d\t", row, wordStats[row]);
+    for (col = 0; col <= numberOfColumns; col++) {
+      printf("*");
+    }
+    printf("\n");
+  }
+
+  // vertical version (slightly more difficult)
 
   return 0;
 }
