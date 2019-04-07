@@ -74,14 +74,14 @@ int main(void) {
   for (c = 0; c < MAX_WORD_LENGTH; c++) {
     totalNumberOfWords += wordStats[c];
   }
-
+  printf("Total number of words: %d.\n", totalNumberOfWords);
   // horizontal version (easier)
   int row = 0, col = 0;
   for (row = 1; row < MAX_WORD_LENGTH; row++) {
     int numberOfColumns = ((float)HISTOGRAM_HORIZONTAL_WIDTH) /
                           totalNumberOfWords * wordStats[row];
     printf("%2d->%5d\t", row, wordStats[row]);
-    for (col = 0; col <= numberOfColumns; col++) {
+    for (col = 0; col < numberOfColumns; col++) {
       printf("*");
     }
     printf("\n");
