@@ -21,10 +21,14 @@ int isWhitespace(int character) {
 int main(void) {
   // initialize objects
   int parserState = OUTSIDE_WORD_BOUNDARIES;
-  // expect word lengths from 1 to 20. Create array that will hold word lengths
+  // expect word lengths from 1 to MAX_WORD_LENGTH.
+  // Create array that will hold word lengths
   // where the index is the number of letters and the value is the found number
   // of words in the input text for each number of letters.
   int wordStats[MAX_WORD_LENGTH];
+  // this array will be filled with the percentual amounts of words found for
+  // wordlength==arrayIndex to total number of words found.
+  int barHeight[MAX_WORD_LENGTH];
   // count characters within the current word
   int currentWordLength = 0;
   char currentWord[MAX_WORD_LENGTH];
@@ -34,6 +38,7 @@ int main(void) {
   for (c = 0; c < MAX_WORD_LENGTH; c++) {
     wordStats[c] = 0;
     currentWord[c] = ' ';
+    barHeight[c] = 0;
   }
 
   // analyze input and create histogram
@@ -63,31 +68,34 @@ int main(void) {
     }
   }
 
-  for (c = 1; c < 30; c++) {
-    printf("Number of words with %d characters is %d.\n", c, wordStats[c]);
-  }
-
   // now print the histogramm
   // TODO move logic to functions later
   // common logic
   int totalNumberOfWords = 0;
-  for (c = 0; c < MAX_WORD_LENGTH; c++) {
+  for (c = 1; c < MAX_WORD_LENGTH; c++) {
     totalNumberOfWords += wordStats[c];
   }
+  for (c = 1; c < MAX_WORD_LENGTH; c++) {
+    printf("Number of words with %d characters is %d.\n", c, wordStats[c]);
+    barHeight[c] =
+        ((float)HISTOGRAM_HORIZONTAL_WIDTH) / totalNumberOfWords * wordStats[c];
+  }
+
   printf("Total number of words: %d.\n", totalNumberOfWords);
-  // horizontal version (easier)
+
+  // output horizontal version (easier)
+  puts("\nHorizontal histogram:");
   int row = 0, col = 0;
   for (row = 1; row < MAX_WORD_LENGTH; row++) {
-    int numberOfColumns = ((float)HISTOGRAM_HORIZONTAL_WIDTH) /
-                          totalNumberOfWords * wordStats[row];
     printf("%2d->%5d\t", row, wordStats[row]);
-    for (col = 0; col < numberOfColumns; col++) {
+    for (col = 0; col < barHeight[row]; col++) {
       printf("*");
     }
     printf("\n");
   }
 
   // vertical version (slightly more difficult)
+  puts("\nVertical histogram:");
 
   return 0;
 }
