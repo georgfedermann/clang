@@ -96,6 +96,17 @@ int main(void) {
 
   // vertical version (slightly more difficult)
   puts("\nVertical histogram:");
-
+  for (row = MAX_WORD_LENGTH - 1; row > 0; row--) {
+    for (col = 1; col < MAX_WORD_LENGTH; col++) {
+      if (barHeight[col] >= row) {
+        printf("*");
+      } else if (row == 1) {
+        printf("_");
+      } else {
+        printf(" ");
+      }
+    }
+    puts("");
+  }
   return 0;
 }
