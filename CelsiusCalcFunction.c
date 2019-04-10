@@ -3,6 +3,7 @@
 #define LOWER_LIMIT 0
 #define STEP 20
 
+// a function prototype declares a function before it gets called
 float convertFahrenheitToCelsius(float fahrenheit);
 
 int main(void) {
