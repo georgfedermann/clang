@@ -1,0 +1,21 @@
+Well, what could be done at this point is creating some test data where
+
+the next c program can delete trailing tabs and empty lines.				
+Might even be a chance to a chance				
+
+
+
+
+to think about how this test data could test edge case. 			
+What could be difficult?
+
+
+
+
+Multiple empty lines.
+			
+Lines containing only tabs, so it is not really empty at first, but definitly after trimming trailing tabs. :-)
+				
+				
+
+Such stuff. And no empty line at the end, just to be annoying :-)
