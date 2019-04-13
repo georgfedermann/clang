@@ -5,6 +5,7 @@
 // max line length in characters
 #define MAX_LINE_LENGTH 120
 #define BLANKS_IN_TAB 7
+#define BLANK ' '
 
 int readline(char currentLine[], int maxLineLength);
 
@@ -47,20 +48,22 @@ int readline(char currentLine[], int maxLineLength) {
 // the end of the string is marked by \0.
 void replaceTabs(char currentLine[]) {
   // i .. counter, c .. character
-  int i, c, blankCount;
+  // blankCount .. counter variable when printing blanks for replaced tabs
+  // blankNumber .. holds the number of blanks required to replace a specific
+  // tab.
+  int i, c, blankCount, blankNumber;
   char backupArray[MAX_LINE_LENGTH];
 
   for (i = 0; (c = currentLine[i]) != '\0'; i++) {
-    currentLine[i] = c == '\t' ? ' ' : c;
     if (c == '\t') {
       backup(currentLine, backupArray, i + 1, MAX_LINE_LENGTH - 1 - i);
-      replaceTabs(backupArray);
-      for (blankCount = 0; blankCount < BLANKS_IN_TAB; blankCount++) {
-        currentLine[i++] = ' ';
+      // replaceTabs(backupArray);
+      blankNumber = BLANKS_IN_TAB - (i % BLANKS_IN_TAB);
+      for (blankCount = 0; blankCount < blankNumber; blankCount++) {
+        currentLine[i++] = BLANK;
       }
       restore(backupArray, currentLine, i);
-    } else {
-      // do nothing
+      i--;
     }
   }
 }

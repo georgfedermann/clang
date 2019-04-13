@@ -1,4 +1,6 @@
-// this file contains tabs and can be used as input to replace tabs with blanks
+//	this file contains tabs and can be used as input to replace tabs with blanks
+//	this should be aligned with class members below.
+//	abc	and this should be aligned with method body contents below.
 public class Employee {
 
 	private String firstName;
