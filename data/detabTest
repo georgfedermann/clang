@@ -20,4 +20,10 @@ public class Employee {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public void beStupid() {
+		for(int c = 0; c < 100; c++){
+			System.out.println("Hello, World!");
+		}
+	}
 }
