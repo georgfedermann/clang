@@ -1,0 +1,23 @@
+// this file contains tabs and can be used as input to replace tabs with blanks
+public class Employee {
+
+	private String firstName;
+	private String lastName;
+
+	public Employee( String firstName, String lastName ) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+}
