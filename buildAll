@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 cc_flags="-Wall -Wextra -Werror -O2 -std=c99 -pedantic"
 echo "Compiling c sources with following compiler flags: ${cc_flags}."
 for file in *.c; do rm -f "./bin/${file%.c}"; echo "Compiling ${file}."; cc ${cc_flags} -o "./bin/${file%.c}" "${file}"; done
