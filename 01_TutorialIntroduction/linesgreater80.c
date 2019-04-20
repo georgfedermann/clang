@@ -36,7 +36,8 @@ void readLine() {
     currentLine[counter] = character;
   }
   printf("Counter has value %d.\n", counter);
-  if (counter == 120) counter--;
+  if (counter == 120)
+    counter--;
   currentLine[counter] = '\0';
   currentLineLength = counter;
 }

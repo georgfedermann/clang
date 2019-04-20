@@ -50,5 +50,6 @@ void copy(void) {
 
   extern char currentLine[], longestLine[];
 
-  for (i = 0; (longestLine[i] = currentLine[i]) != '\0'; i++);
+  for (i = 0; (longestLine[i] = currentLine[i]) != '\0'; i++)
+    ;
 }

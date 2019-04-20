@@ -10,11 +10,11 @@ void printUsage() {
   printf("If no environment variable is given, prints all variables found.\n");
 }
 
-void printEnvironmentVariable(char* variableName) {
+void printEnvironmentVariable(char *variableName) {
   printf("%s=%s\n", variableName, getenv(variableName));
 }
 
-int main(int argCount, char** argValues) {
+int main(int argCount, char **argValues) {
   if (argCount == 0 || argCount == 1) {
     printUsage();
   } else {

@@ -13,10 +13,10 @@ void copy(char to[], char from[]);
 // print longest line
 
 int main() {
-  int len;                        // current line length
-  int max;                        // maximum length seen so far
-  char line[MAX_LINE_LENGTH];     // current input line
-  char longest[MAX_LINE_LENGTH];  // longest line seen so far
+  int len;                       // current line length
+  int max;                       // maximum length seen so far
+  char line[MAX_LINE_LENGTH];    // current input line
+  char longest[MAX_LINE_LENGTH]; // longest line seen so far
 
   max = 0;
   while ((len = getline1(line, MAX_LINE_LENGTH)) > 0) {

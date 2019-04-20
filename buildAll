@@ -6,7 +6,19 @@ file_counter=0
 mkdir -p bin
 echo "Compiling c sources with following compiler flags: ${cc_flags}."
 
-for file in $(find . -type f -name "*.c"); do output_file=${file##.*/}; output_file=${output_file%%.c}; echo "Compiling ${file} to ./bin/${output_file}."; rm -f ./bin/${output_file}; cc ${cc_flags} -o "./bin/${output_file}" "${file}"; file_counter=$((file_counter+1)); done
+for file in $(find . -type f -name "*.c"); do
+  # compile filename.c to command bin/filename
+  # thus, truncate the path before the filename
+  output_file=${file##.*/}
+  # and truncate the .c suffix
+  output_file=${output_file%%.c}
+  echo "Applying clang-format to source file ${file}."
+  clang-format60 -i "${file}"
+  echo "Compiling ${file} to ./bin/${output_file}."
+  rm -f ./bin/${output_file}
+  cc ${cc_flags} -o "./bin/${output_file}" "${file}"
+  file_counter=$((file_counter+1))
+done
 
 echo "Compiled ${file_counter} c source files."
 grin
